@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.example.hello-world</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Hello-world</name>
+
+    <description>
+        <![CDATA[
+      Demonstrates implementing Action and Action Group patterns.<br> Adds entries to the Tools menu.
+    ]]>
+    </description>
+
+    <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+    <actions>
+
+        <group id="com.example.helloworld.GroupedActions"
+               text="Custom Tools" description="Custom Tools"
+               popup="true" icon="com.example.helloworld.icons.SdkIcons.Sdk_default_icon">
+
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+
+            <action id="com.example.helloworld.GroupPopDialogAction" class="com.example.helloworld.PopupDialogAction"
+                    text="A Group Action" description="SDK static grouped action example"
+                    icon="com.example.helloworld.icons.SdkIcons.Sdk_default_icon">
+
+                <override-text place="MainMenu" text="Execute action"/>
+                <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>
+                <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+            </action>
+        </group>
+
+    </actions>
+
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij"></extensions>
+</idea-plugin>
